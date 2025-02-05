@@ -1,0 +1,30 @@
+services:  
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - '6080:80' # Public HTTP Port
+      - '6443:443' # Public HTTPS Port
+      - '6081:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    volumes:
+      - ngnix_data:/data
+      - ngnix_letsencrypt:/etc/letsencrypt
+    networks:
+    - prodesnet
+volumes:
+  ngnix_data:
+    external: true
+  ngnix_letsencrypt:
+    external: true
+networks:
+  prodesnet:
+    external: true
