@@ -4,7 +4,7 @@ services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
     ports:
-      - 5679:5678
+      - 5681:5678
     environment:
       - GENERIC_TIMEZONE=Europe/Madrid
       - TZ=Europe/Madrid
