@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    ports:
+      - 5679:5678
+    environment:
+      - GENERIC_TIMEZONE=Europe/Madrid
+      - TZ=Europe/Madrid
+      - N8N_SECURE_COOKIE=false
+    networks:
+      - n8nnet
+    deploy:
+      replicas: 2  # Número de réplicas que deseas
+      #placement:
+      #  constraints: [node.role == manager]  # Asegura que solo se ejecute en nodos manager
+
+networks:
+  n8nnet:
