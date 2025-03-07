@@ -10,11 +10,11 @@ services:
       - TZ=Europe/Madrid
       - N8N_SECURE_COOKIE=false
     networks:
-      - n8nnet
+      - n8nnet5
     deploy:
       replicas: 2  # Número de réplicas que deseas
       #placement:
       #  constraints: [node.role == manager]  # Asegura que solo se ejecute en nodos manager
 
 networks:
-  n8nnet:
+  n8nnet5:
